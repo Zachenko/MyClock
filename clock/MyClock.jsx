@@ -3,20 +3,20 @@ import { StyleSheet, Text, View} from 'react-native';
 
 function MyClock (props) {
 
-  const [time, setTime] = useState(new Date().toLocaleTimeString());
+  const [time, setTime] = useState(new Date());
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setTime(new Date().toLocaleTimeString());
-    }, 1000);
-  
-    return () => clearInterval(intervalId);
-  }, []);
-  
+  setInterval(() => {
+      data = new Date();
+      setTime(data);
+  }, 1000);
+
   return (
 
     <View style={styles.container}>
-      <Text style={styles.clock}>{time}</Text>
+      <View style={styles.clock}>
+        <Text>{time.toUTCString()}</Text>
+        <Text>{time.getFullYear()}.{time.getMonth()}.{time.getDate()}</Text>
+      </View>
     </View>
   );
 }
