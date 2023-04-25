@@ -15,7 +15,7 @@ function MyClock (props) {
 
     <View>
       <Text>{time.toLocaleTimeString()}</Text>
-      <Text>{time.getFullYear()}.{time.getMonth()}.{time.getDate()}</Text>
+      <Text>{time.getFullYear()}.{time.getMonth() < 10 ? `0${time.getMonth()}` : time.getMonth()}.{time.getDate()}</Text>
     </View>
   );
 }
