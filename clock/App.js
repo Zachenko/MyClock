@@ -17,11 +17,11 @@ const Drawer = createDrawerNavigator()
 function DrawerNavigator() {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Ukraine" component={() => <MyClock timezone={1}/>}/>
-      <Drawer.Screen name="Poland" component={() => <MyClock timezone={2}/>}/>
-      <Drawer.Screen name="London" component={() => <MyClock timezone={3}/>}/>
-      <Drawer.Screen name="UTC" component={() => <MyClock timezone={4}/>}/>
-      <Drawer.Screen name="USA" component={() => <MyClock timezone={5}/>}/>
+      <Drawer.Screen name="USA" component={() => <MyClock timezone={6}/>}/>
+      <Drawer.Screen name="UTC" component={() => <MyClock timezone={3}/>}/>
+      <Drawer.Screen name="London" component={() => <MyClock timezone={2}/>}/>
+      <Drawer.Screen name="Poland" component={() => <MyClock timezone={0}/>}/>
+      <Drawer.Screen name="Ukraine" component={() => <MyClock timezone={-1}/>}/>
     </Drawer.Navigator>
   )
 }

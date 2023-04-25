@@ -3,32 +3,21 @@ import { StyleSheet, Text, View} from 'react-native';
 
 function MyClock (props) {
 
-  const [time, setTime] = useState(new Date());
+  let data = Date.parse(new Date())
+  const [time, setTime] = useState(new Date(data - 1000 * 60 * 60 * props.timezone));
 
-  setInterval(() => {
-      data = new Date();
-      setTime(data);
+  setInterval(function() {
+    let data = Date.parse(new Date())
+    setTime(new Date(data - 1000 * 60 * 60 * props.timezone));
   }, 1000);
 
   return (
 
-    <View style={styles.container}>
-      <View style={styles.clock}>
-        <Text>{time.toUTCString()}</Text>
-        <Text>{time.getFullYear()}.{time.getMonth()}.{time.getDate()}</Text>
-      </View>
+    <View>
+      <Text>{time.toLocaleTimeString()}</Text>
+      <Text>{time.getFullYear()}.{time.getMonth()}.{time.getDate()}</Text>
     </View>
   );
 }
 
 export default MyClock;
-
-const styles = StyleSheet.create({
-  container: {
-
-  },
-
-  clock: {
-
-  }
-});
