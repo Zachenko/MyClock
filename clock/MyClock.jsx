@@ -1,4 +1,4 @@
-import React, { useState } from'react';
+import React, { useState, useEffect } from'react';
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 
 function MyClock (props) {
@@ -6,10 +6,14 @@ function MyClock (props) {
   let data = Date.parse(new Date())
   const [time, setTime] = useState(new Date(data - 1000 * 60 * 60 * props.timezone));
 
-  setInterval(function() {
-    let data = Date.parse(new Date())
-    setTime(new Date(data - 1000 * 60 * 60 * props.timezone));
-  }, 1000);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      let data = Date.parse(new Date())
+      setTime(new Date(data - 1000 * 60 * 60 * props.timezone));
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
 
